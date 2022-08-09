@@ -3,8 +3,14 @@ const dotenv = require('dotenv').config()
 
 const db = require('./backend/config/database')
 const models = require('./backend/model/index')
+//edit to user routes
+const routes = require('./backend/routes/userRoutes')
+const bodyParser = require('body-parser')
 
 const app = express()
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(express.json())
+app.use('/api',routes)
 
 const port = process.env.PORT || 5000
 
