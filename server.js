@@ -16,8 +16,9 @@ db.authenticate()
 .then(() => console.log('DATABASE CONNECTED SUCCESSFULLY'))
 .catch(err => console.log(err))
 
-db.sync({force: false})
-.then(() => {
-    app.listen(port, console.log("App running on http://localhost:" + port))
-})
-.catch(err => console.log('sync err: ', err))
+// db.sync({force: false})
+// .then(() => {
+    
+// })
+// .catch(err => console.log('sync err: ', err))
+app.listen(port, console.log("App running on http://localhost:" + port))
