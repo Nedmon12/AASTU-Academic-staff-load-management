@@ -3,7 +3,9 @@ const db = require('../config/database')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 
-const User = db.define('user', {
+const Staff = require('./Staff')
+
+const User = db.define('User', {
     email: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -65,5 +67,11 @@ User.prototype.generateStaffId = function () {
 
 }
 
-module.exports = User
+Staff.hasOne(User, {
+    foreignKey: {
+        allowNull: true,
+        name: 'staff_id'
+    }
+})
 
+module.exports = User

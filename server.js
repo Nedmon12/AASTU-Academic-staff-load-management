@@ -1,11 +1,12 @@
 const express = require('express')
 const dotenv = require('dotenv').config()
+const db_coll = require('./backend/config/db_collection')
 
 const db = require('./backend/config/database')
 const models = require('./backend/model/index')
 //edit to user routes
-const routes = require('./backend/routes/userRoutes')
 const bodyParser = require('body-parser')
+const routes = require('./backend/routes/routes')
 
 const app = express()
 app.use(bodyParser.urlencoded({extended: true}))
