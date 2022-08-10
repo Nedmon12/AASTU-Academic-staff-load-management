@@ -1,7 +1,9 @@
 const { Sequelize, DataTypes } = require('sequelize')
 const db = require('../config/database')
 
-const User = db.define('user', {
+const Staff = require('./Staff')
+
+const User = db.define('User', {
     email: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -37,5 +39,11 @@ const User = db.define('user', {
     },
 })
 
-module.exports = User
+Staff.hasOne(User, {
+    foreignKey: {
+        allowNull: true,
+        name: 'staff_id'
+    }
+})
 
+module.exports = User

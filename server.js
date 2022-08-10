@@ -1,8 +1,8 @@
 const express = require('express')
 const dotenv = require('dotenv').config()
+const db_coll = require('./config/db_collection')
 
 const db = require('./backend/config/database')
-const models = require('./backend/model/index')
 
 const app = express()
 
