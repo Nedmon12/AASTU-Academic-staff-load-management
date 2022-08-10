@@ -1,12 +1,15 @@
 const express = require('express')
 const dotenv = require('dotenv').config()
-const db_coll = require('./config/db_collection')
+const db_coll = require('./backend/config/db_collection')
 
 const db = require('./backend/config/database')
+const routes = require('./backend/routes/routes')
 
 const app = express()
 
 const port = process.env.PORT || 5000
+
+// app.use('/api', routes)
 
 //Test database connection
 db.authenticate()
