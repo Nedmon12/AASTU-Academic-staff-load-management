@@ -46,6 +46,10 @@ const Research = db.define('Research', {
         type: DataTypes.STRING,
         allowNull: false
     },
+    approved: {
+        type: DataTypes.INTEGER(1),
+        allowNull: false
+    }
 })
 
 Office.hasOne(Research, {
