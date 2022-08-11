@@ -45,5 +45,11 @@ Staff.hasOne(User, {
         name: 'staff_id'
     }
 })
+User.belongsTo(Staff, {
+    foreignKey: {
+        allowNull: true,
+        name: 'staff_id'
+    }
+})
 
 module.exports = User

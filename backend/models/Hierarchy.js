@@ -4,28 +4,23 @@ const db = require('../config/database')
 const Office = require('./Office')
 
 const Hierarchy = db.define('Hierarchy', {
-    parent: {
-        type: DataTypes.STRING,
+    id: {
+        type: DataTypes.INTEGER,
         allowNull: false,
-        primaryKey: true,
-    },
-    child: {
-        type: DataTypes.STRING,
-        allowNull: false,
+        autoIncrement: true,
         primaryKey: true,
     },
 })
 
-Office.hasMany(Hierarchy, {
-    foreignKey: {
-        name: 'parent'
-    }
+Office.belongsToMany(Office, {
+    as: 'child',
+    foreignKey: 'child',
+    through: Hierarchy
 })
-
-Office.hasMany(Hierarchy, {
-    foreignKey: {
-        name: 'child'
-    }
+Office.belongsToMany(Office, {
+    as: 'parent',
+    foreignKey: 'parent',
+    through: Hierarchy
 })
 
 module.exports = Hierarchy

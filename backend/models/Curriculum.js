@@ -26,10 +26,6 @@ const Curriculum = db.define('Curriculum', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    owner: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
     payment_rate: {
         type: DataTypes.DOUBLE,
         allowNull: false,
@@ -44,7 +40,12 @@ const Curriculum = db.define('Curriculum', {
     },
 })
 
-Office.hasOne(Curriculum, {
+Office.hasMany(Curriculum, {
+    foreignKey: {
+        name: 'owner'
+    }
+})
+Curriculum.belongsTo(Office, {
     foreignKey: {
         name: 'owner'
     }

@@ -15,14 +15,6 @@ const Batch = db.define('Batch', {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    department: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    semester_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
     program_type: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -38,15 +30,17 @@ const Batch = db.define('Batch', {
 })
 
 Office.hasMany(Batch, {
-    foreignKey: {
-        name: 'department'
-    }
+    foreignKey: 'department'
+})
+Batch.belongsTo(Office, {
+    foreignKey: 'department'
 })
 
 Semester.hasMany(Batch, {
-    foreignKey: {
-        name: 'semester_id'
-    }
+    foreignKey: 'semester_id'
+})
+Batch.belongsTo(Semester, {
+    foreignKey: 'semester_id'
 })
 
 module.exports = Batch

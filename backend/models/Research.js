@@ -38,10 +38,6 @@ const Research = db.define('Research', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    office_id: {
-        type: DataTypes.STRING,
-        allowNull: true
-    },
     attachment: {
         type: DataTypes.STRING,
         allowNull: false
@@ -53,9 +49,10 @@ const Research = db.define('Research', {
 })
 
 Office.hasOne(Research, {
-    foreignKey: {
-        name: 'office_id'
-    }
+    foreignKey: 'office_id'
+})
+Research.belongsTo(Office, {
+    foreignKey: 'office_id'
 })
 
 module.exports = Research
