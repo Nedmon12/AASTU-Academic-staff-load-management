@@ -14,16 +14,13 @@ const Group = db.define('Group', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    section_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
 })
 
 Section.hasMany(Group, {
-    foreignKey: {
-        name: 'section_id'
-    }
+    foreignKey: 'section_id'
+})
+Group.belongsTo(Section, {
+    foreignKey: 'section_id'
 })
 
 module.exports = Group

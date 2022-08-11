@@ -6,40 +6,28 @@ const Research = require('./Research')
 const Role = require('./Role')
 
 const Staff_Research = db.define('Staff_Research', {
-    staff_id: {
+    id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        primaryKey: true,
         autoIncrement: true,
-    },
-    research_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-    },
-    role_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
         primaryKey: true,
     },
 })
 
-Staff.hasOne(Staff_Research, {
-    foreignKey: {
-        name: 'staff_id'
-    }
+Staff.belongsToMany(Research, {
+    foreignKey: 'staff_id',
+    through: Staff_Research
+})
+Research.belongsToMany(Staff, {
+    foreignKey: 'research_id',
+    through: Staff_Research
 })
 
-Research.hasOne(Staff_Research, {
-    foreignKey: {
-        name: 'research_id'
-    }
+Role.hasMany(Staff_Research, {
+    foreignKey: 'role_id'
 })
-
-Role.hasOne(Staff_Research, {
-    foreignKey: {
-        name: 'role_id'
-    }
+Staff_Research.belongsTo(Role, {
+    foreignKey: 'role_id'
 })
 
 module.exports = Staff_Research

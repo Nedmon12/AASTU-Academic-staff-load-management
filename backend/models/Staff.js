@@ -13,22 +13,6 @@ const Staff = db.define('Staff', {
         allowNull: false,
         primaryKey: true,
     },
-    department: {
-        type: DataTypes.STRING(50),
-        allowNull: false,
-    },
-    status_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
-    rank_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
-    position_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
     qualifications: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -47,28 +31,32 @@ const Staff = db.define('Staff', {
     },
 })
 
-Position.hasOne(Staff, {
-    foreignKey: {
-        name: 'position_id'
-    }
+Position.hasMany(Staff, {
+    foreignKey: 'position_id'
+})
+Staff.belongsTo(Position, {
+    foreignKey: 'position_id'
 })
 
-Rank.hasOne(Staff, {
-    foreignKey: {
-        name: 'rank_id'
-    }
+Rank.hasMany(Staff, {
+    foreignKey: 'rank_id'
+})
+Staff.belongsTo(Rank, {
+    foreignKey: 'rank_id'
 })
 
-Status.hasOne(Staff, {
-    foreignKey: {
-        name: 'status_id'
-    }
+Status.hasMany(Staff, {
+    foreignKey: 'status_id'
+})
+Staff.belongsTo(Status, {
+    foreignKey: 'status_id'
 })
 
-Office.hasOne(Staff, {
-    foreignKey: {
-        name: 'department'
-    }
+Office.hasMany(Staff, {
+    foreignKey: 'department'
+})
+Staff.belongsTo(Office, {
+    foreignKey: 'department'
 })
 
 module.exports = Staff

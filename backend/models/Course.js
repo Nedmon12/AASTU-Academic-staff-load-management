@@ -37,10 +37,6 @@ const Course = db.define('Course', {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    owner: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
     total_leh: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -51,7 +47,12 @@ const Course = db.define('Course', {
     },
 })
 
-Office.hasOne(Course, {
+Office.hasMany(Course, {
+    foreignKey: {
+        name: 'owner'
+    }
+})
+Course.belongsTo(Office, {
     foreignKey: {
         name: 'owner'
     }

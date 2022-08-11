@@ -6,40 +6,32 @@ const Curriculum = require('./Curriculum')
 const Semester = require('./Semester')
 
 const Course_Curriculum = db.define('course_curriculum', {
-    course_code: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    curriculum_id: {
+    id: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
     },
     year: {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    semester_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
 })
 
-Course.hasMany(Course_Curriculum, {
-    foreignKey: {
-        name: 'course_code'
-    }
+Course.belongsToMany(Curriculum, {
+    foreignKey: 'course_code',
+    through: Course_Curriculum
 })
-
-Curriculum.hasMany(Course_Curriculum, {
-    foreignKey: {
-        name: 'curriculum_id'
-    }
+Curriculum.belongsToMany(Course, {
+    foreignKey: 'curriculum_id',
+    through: Course_Curriculum
 })
 
 Semester.hasMany(Course_Curriculum, {
-    foreignKey: {
-        name: 'semester_id'
-    }
+    foreignKey: 'semester_id'
+})
+Course_Curriculum.belongsTo(Semester, {
+    foreignKey: 'semester_id'
 })
 
 module.exports = Course_Curriculum

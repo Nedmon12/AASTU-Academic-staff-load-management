@@ -11,14 +11,6 @@ const Overload_Request = db.define('Overload_Request', {
         primaryKey: true,
         autoIncrement: true,
     },
-    staff_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
-    semester_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
     department_approval: {
         type: DataTypes.INTEGER(1),
         allowNull: false,
@@ -38,15 +30,17 @@ const Overload_Request = db.define('Overload_Request', {
 })
 
 Staff.hasMany(Overload_Request, {
-    foreignKey: {
-        name: 'staff_id'
-    }
+    foreignKey: 'staff_id'
+})
+Overload_Request.belongsTo(Staff, {
+    foreignKey: 'staff_id'
 })
 
 Semester.hasMany(Overload_Request, {
-    foreignKey: {
-        name: 'semester_id'
-    }
+    foreignKey: 'semester_id'
+})
+Overload_Request.belongsTo(Semester, {
+    foreignKey: 'semester_id'
 })
 
 module.exports = Overload_Request

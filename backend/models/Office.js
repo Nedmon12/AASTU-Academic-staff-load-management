@@ -13,20 +13,17 @@ const Office = db.define('Office', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    position_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    },
     is_department: {
         type: DataTypes.INTEGER(1),
         allowNull: false
     },
 })
 
-Position.hasOne(Office, {
-    foreignKey: {
-        name: 'position_id'
-    }
+Position.hasMany(Office, {
+    foreignKey: 'position_id'
+})
+Office.belongsTo(Position, {
+    foreignKey: 'position_id'
 })
 
 module.exports = Office

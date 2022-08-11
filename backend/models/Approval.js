@@ -2,6 +2,7 @@ const { Sequelize, DataTypes } = require('sequelize')
 const db = require('../config/database')
 
 const Position = require('./Position')
+const Semester = require('./Semester')
 
 const Approval = db.define('Approval', {
     id: {
@@ -9,27 +10,25 @@ const Approval = db.define('Approval', {
         allowNull: false,
         primaryKey: true,
         autoIncrement: true,
-    },
-    sender: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
-    receiver: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
     }
 })
 
-Position.hasMany(Approval, {
-    foreignKey: {
-        name: 'sender'
-    }
+Position.belongsToMany(Position, {
+    as: 'sender',
+    foreignKey: 'sender',
+    through: Approval
+})
+Position.belongsToMany(Position, {
+    as: 'reciever',
+    foreignKey: 'receiver',
+    through: Approval
 })
 
-Position.hasMany(Approval, {
-    foreignKey: {
-        name: 'receiver'
-    }
+Semester.hasMany(Approval, {
+    foreignKey: 'semester_id'
+})
+Approval.belongsTo(Semester, {
+    foreignKey: 'semester_id'
 })
 
 module.exports = Approval
