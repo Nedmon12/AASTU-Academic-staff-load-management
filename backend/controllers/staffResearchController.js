@@ -20,38 +20,15 @@ exports.addStaffResearch = async (req, res, next) => {
     }
 }
 
-//UPDATE RESEARCH WITH STAFF
-exports.updateStaffResearch = async (req, res, next) => {
-    const id = req.params.id
-    const { staff, research, role } = req.body
-    try {
-        const addedStaffResearch = await Staff_Research.update({
-            staff_id: staff,
-            research_id: research,
-            role_id: role
-        },
-        {
-            where: {
-                id: id
-            }
-        })
-        res.status(200).send({ success: "Updated successfully" })
-    } catch (error) {
-        res.status(500).send({ error: "Unable to update to database" })
-    }
-}
-
 //READ ALL STAFFS FOR A RESEARCH
 exports.readStaffsForResearch = async (req, res, next) => {
     const research_id = req.params.id
     try {
-        const staffsForResearch = await Staff_Research.findAll({
-            include: Staff
-        },
-        {
+        const staffsForResearch = await Research.findAll({
             where: {
-                research_id: research_id
-            }
+                id: research_id
+            },
+            include: Staff
         })
         res.send(JSON.stringify(staffsForResearch))
     } catch (error) {
@@ -64,13 +41,11 @@ exports.readStaffsForResearch = async (req, res, next) => {
 exports.readResearchOfStaff = async (req, res, next) => {
     const staff_id = req.params.id
     try {
-        const researchOfStaff = await Staff_Research.findAll({
-            include: Research
-        },
-        {
+        const researchOfStaff = await Staff.findAll({
             where: {
-                staff_id: staff_id
-            }
+                id: staff_id
+            },
+            include: Research
         })
         res.send(JSON.stringify(researchOfStaff))
     } catch (error) {
