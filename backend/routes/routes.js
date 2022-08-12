@@ -6,6 +6,6 @@ const routes = require('express').Router()
 // routes.use('/semester')
 routes.use('/research', require('./researchRoutes'))
 routes.use('/role', require('./roleRoutes'))
-
+routes.use('/overload_request', require('./overloadRequestRoutes'))
 
 module.exports = routes
