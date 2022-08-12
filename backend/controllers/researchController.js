@@ -3,6 +3,7 @@ const Sequelize = require('sequelize')
 //models
 const Research = require('../models/Research')
 const Office = require('../models/Office')
+
 //ADD RESEARCH
 exports.addResearch = async (req, res, next) => {
     const { grantCode, title, summary, startDate, endDate, type, institution, attachment, approved, officeId } = req.body
@@ -19,6 +20,7 @@ exports.addResearch = async (req, res, next) => {
             approved: approved,
             office_id: officeId
         })
+        res.status(200).send({ success: "Added successfully" })
     } catch (err) {
         res.status(500).send({ error: "Unable to add to database" })
     }
@@ -46,6 +48,7 @@ exports.updateResearch = async (req, res, next) => {
                     id: id
                 }
             })
+        res.status(200).send({ success: "Updated successfully" })
     } catch (err) {
         res.status(500).send({ error: "Unable to update to database" })
     }

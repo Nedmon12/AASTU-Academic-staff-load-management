@@ -1,4 +1,5 @@
 const express = require('express')
+const bodyParser = require('body-parser');
 const dotenv = require('dotenv').config()
 const db_coll = require('./backend/config/db_collection')
 
@@ -7,9 +8,14 @@ const routes = require('./backend/routes/routes')
 
 const app = express()
 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json())
+
 const port = process.env.PORT || 5000
 
 app.use('/api', routes)
+
+
 
 //Test database connection
 db.authenticate()
