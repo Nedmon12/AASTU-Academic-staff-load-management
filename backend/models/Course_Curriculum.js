@@ -16,6 +16,10 @@ const Course_Curriculum = db.define('course_curriculum', {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
+    semester_term: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    }
 })
 
 Course.belongsToMany(Curriculum, {
@@ -25,13 +29,6 @@ Course.belongsToMany(Curriculum, {
 Curriculum.belongsToMany(Course, {
     foreignKey: 'curriculum_id',
     through: Course_Curriculum
-})
-
-Semester.hasMany(Course_Curriculum, {
-    foreignKey: 'semester_id'
-})
-Course_Curriculum.belongsTo(Semester, {
-    foreignKey: 'semester_id'
 })
 
 module.exports = Course_Curriculum
