@@ -41,6 +41,7 @@ exports.updateRole = async (req, res, next) => {
 exports.readRole = async (req, res, next) => {
     try {
         const allRoles = await Role.findAll()
+        res.setHeader('content-type', 'application/json')
         res.send(JSON.stringify(allRoles))
     } catch (err) {
         res.status(500).send({ error: "Unable to fetch from database" })
@@ -56,6 +57,7 @@ exports.readSpecificRole = async (req, res, next) => {
                 id: id
             }
         })
+        res.setHeader('content-type', 'application/json')
         res.send(JSON.stringify(allRoles))
     } catch (err) {
         res.status(500).send({ error: "Unable to fetch from database" })

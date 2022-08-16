@@ -60,6 +60,7 @@ exports.readResearch = async (req, res, next) => {
         const allResearch = await Research.findAll({
             include: Office
         })
+        res.setHeader('content-type', 'application/json')
         res.send(JSON.stringify(allResearch))
     } catch (err) {
         res.status(500).send({ error: "Unable to fetch from database" })
@@ -76,6 +77,7 @@ exports.readSpecificResearch = async (req, res, next) => {
                 id: id
             }
         })
+        res.setHeader('content-type', 'application/json')
         res.send(JSON.stringify(allResearch))
     } catch (err) {
         res.status(500).send({ error: "Unable to fetch from database" })

@@ -30,6 +30,7 @@ exports.readStaffsForResearch = async (req, res, next) => {
             },
             include: Staff
         })
+        res.setHeader('content-type', 'application/json')
         res.send(JSON.stringify(staffsForResearch))
     } catch (error) {
         res.status(500).send({ error: "Unable to fetch from database" })
@@ -47,6 +48,7 @@ exports.readResearchOfStaff = async (req, res, next) => {
             },
             include: Research
         })
+        res.setHeader('content-type', 'application/json')
         res.send(JSON.stringify(researchOfStaff))
     } catch (error) {
         res.status(500).send({ error: "Unable to fetch from database" })

@@ -27,6 +27,7 @@ exports.readOverloadRequest = async (req, res, next) => {
         const allOverloadRequests = await Overload_Request.findAll({
             include: {Staff, Semester},
         })
+        res.setHeader('content-type', 'application/json')
         res.send(JSON.stringify(allOverloadRequests))
     } catch (error) {
         res.status(500).send({ error: "Unable to fetch from database" })
@@ -43,6 +44,7 @@ exports.readSpecificOverloadRequest = async (req, res, next) => {
                 id: id
             }
         })
+        res.setHeader('content-type', 'application/json')
         res.send(JSON.stringify(overloadRequest))
     } catch (error) {
         res.status(500).send({ error: "Unable to fetch from database" })
