@@ -1,0 +1,77 @@
+import React from "react";
+import styled from "@emotion/styled";
+import Avatar from "@mui/material/Avatar";
+import Typography from "@mui/material/Typography";
+import { Box } from "@mui/system";
+import Grid from "@mui/material/Unstable_Grid2";
+
+import Setting from "@mui/icons-material/Settings";
+
+import "@fontsource/poppins/300.css";
+import "@fontsource/poppins/400.css";
+import "@fontsource/poppins/500.css";
+import "@fontsource/poppins/700.css";
+
+let primary = "#111847";
+let secondary = "#A37C0C";
+let third = "#9B9B9B";
+let backgroundColor = "lightgray";
+//creating the header
+const Header = styled.header`
+  padding: 32px;
+  width: 100%;
+  background-color: ${backgroundColor};
+  color: ${primary};
+  font-family: "Poppins", sans-serif;
+`;
+
+const ImgContainer = styled.div`
+  padding: 10px;
+  background-color: ${secondary};
+  display: flex;
+  border-radius: 30px;
+  align-items: center;
+`;
+
+
+
+function TopBar() {
+  return (
+    <Header>
+      <Grid
+        container
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
+      >
+        <Grid
+          container
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+          sm={1}
+          spacing={3}
+        >
+          <Avatar
+            src="/images/aastulogo.png"
+            sx={{ width: 40, height: 40, margin: "0px 10px" }}
+          />
+          <Typography
+            sx={{ fontFamily: "Poppins", fontWeight: 600, fontSize: 24 }}
+          >
+            ALMS
+          </Typography>
+        </Grid>
+        <ImgContainer>
+          <Avatar
+            src="/images/photo.png"
+            sx={{ width: 32, height: 32, margin: "0px 10px" }}
+          />
+          <Setting />
+        </ImgContainer>
+      </Grid>
+    </Header>
+  );
+}
+
+export default TopBar;
