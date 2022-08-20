@@ -5,12 +5,13 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 // import Paper from '@mui/material/Paper';
-// import { styled } from '@mui/system';
+import { styled } from '@mui/system';
 
-// const MyButton = styled(Table)(({theme}) =>({
-//     // backgroundColor: theme.palette.primary.contrastText
+const MyButton = styled('div')(({theme}) =>({
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: 'black'
     
-// }))
+}))
 
 const GenerateTable = ({ tableInputs }) => {
     
@@ -18,7 +19,9 @@ const GenerateTable = ({ tableInputs }) => {
   return (
     <div>
         <div>Table</div>
-        {/* <MyButton> */}
+        <MyButton>
+            hi 
+        </MyButton>
         <TableContainer>
             <Table>
                 <TableHead>
@@ -41,7 +44,6 @@ const GenerateTable = ({ tableInputs }) => {
                 </TableBody>
             </Table>
         </TableContainer>
-        {/* </MyButton> */}
     </div>
   )
 }
