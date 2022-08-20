@@ -29,9 +29,6 @@ function SideBarGroup({ content }) {
   console.log(content.header, content.childs);
   return (
     <>
-      <Button color="secondary" variant="contained">
-        Primaryd
-      </Button>
       <NavGroup>
         <GroupHeader>{content[0].header}</GroupHeader>
         {content[0].childs.map((val, index) => {

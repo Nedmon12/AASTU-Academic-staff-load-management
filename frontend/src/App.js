@@ -11,7 +11,6 @@ function App() {
     <>
       <CourseContextProvider>
         <ThemeProvider theme={theme}>
-          <Button color="primary">hell world</Button>
           <TopBar />
           <SideBar />
           <Courses />
