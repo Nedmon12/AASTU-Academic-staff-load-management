@@ -9,25 +9,21 @@ import { styled } from '@mui/system';
 
 const MyButton = styled('div')(({theme}) =>({
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: 'black'
-    
+    backgroundColor: 'brown',     
 }))
 
 const GenerateTable = ({ tableInputs }) => {
-    
-
   return (
     <div>
-        <div>Table</div>
         <MyButton>
-            hi 
-        </MyButton>
+        <div>Table</div>
+            
         <TableContainer>
             <Table>
                 <TableHead>
                     <TableRow>
                         {tableInputs.tableheaders.map(tablehead => {
-                                return <TableCell>
+                            return <TableCell key={tablehead}>
                                     {tablehead}
                                 </TableCell>
                         })}
@@ -36,7 +32,7 @@ const GenerateTable = ({ tableInputs }) => {
                 <TableBody>
                     <TableRow>
                         {tableInputs.rows.map(row => {
-                            return <TableCell>
+                            return <TableCell key={row}>
                                 {row}
                             </TableCell>
                         })}
@@ -44,6 +40,7 @@ const GenerateTable = ({ tableInputs }) => {
                 </TableBody>
             </Table>
         </TableContainer>
+        </MyButton>
     </div>
   )
 }
