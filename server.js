@@ -1,12 +1,14 @@
 const express = require("express");
 const dotenv = require("dotenv").config();
 const db_coll = require("./backend/config/db_collection");
+const cors = require("cors");
 
 const db = require("./backend/config/database");
 const routes = require("./backend/routes/routes");
 
 const app = express();
-
+app.use(cors());
+app.use(express.json());
 const port = process.env.PORT || 5000;
 
 app.use("/api", routes);

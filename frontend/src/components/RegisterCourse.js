@@ -4,6 +4,7 @@ import colors, { StyledForm, Success, Cancel } from "./UiComponent";
 import { useFormik } from "formik";
 import { css } from "@emotion/react";
 import * as yup from "yup";
+import axios from "axios";
 
 //context provider
 import CourseContext from "./CourseContextProvider";
@@ -19,6 +20,8 @@ import {
   Button,
 } from "@mui/material";
 import { FormatLineSpacing } from "@mui/icons-material";
+
+axios.defaults.baseURL = "http://localhost:5000/api/";
 
 const curriculum = [
   { name: "", value: "" },
@@ -68,6 +71,7 @@ function RegisterCourse() {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
+      axios.post("/courses/addCourse", values);
       courseContext.dispatch({ type: "addCourse", course: values });
       alert(JSON.stringify(values, null, 2));
     },

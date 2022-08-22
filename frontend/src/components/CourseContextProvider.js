@@ -42,9 +42,9 @@ const courseData = [
 const CourseContext = createContext();
 const reducer = (state, action) => {
   switch (action.type) {
-    case "load":
+    case "loadCourse":
       console.log("loading");
-      return state;
+      return action.course;
     case "addCourse":
       console.log("adding");
       return addCourse(state, action.course);

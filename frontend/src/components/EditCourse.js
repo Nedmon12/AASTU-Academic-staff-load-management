@@ -59,20 +59,21 @@ function EditCourse(match) {
   console.log(code);
   const courseContext = useContext(CourseContext);
   const course = courseContext.state.filter(
-    (course) => course.courseCode === code.code
+    (course) => course.course_code === code.code
   )[0];
-  console.log(course);
+  console.log("here i am", <course></course>);
+  console.log(courseContext.state);
   const formik = useFormik({
     initialValues: {
       Curriculum: curriculum[1].value,
-      courseName: course.courseName,
-      courseCode: course.courseCode,
-      creditHour: course.creditHour,
-      lecHour: course.lecHour,
-      labHour: course.labHour,
-      tutHour: course.tutHour,
-      menHour: course.menHour,
-      advHour: course.advHour,
+      courseName: course.course_name,
+      courseCode: course.course_code,
+      creditHour: course.credit_hr,
+      lecHour: course.lecture,
+      labHour: course.lab,
+      tutHour: course.tutorial,
+      menHour: course.mentoring,
+      advHour: course.advisory,
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
