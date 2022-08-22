@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { useSelector } from "react-redux";
+
+import { ThemeProvider } from "@mui/material/styles";
+import { CssBaseline, StyledEngineProvider } from "@mui/material";
+import { Link } from "react-router-dom";
+
+// routing
+import MainRoutes from "./routes/mainRoutes";
+
+// defaultTheme
+// import themes from 'themes';
+
+// project imports
+// import NavigationScroll from 'layout/NavigationScroll';
+
+// ==============================|| APP ||============================== //
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <StyledEngineProvider injectFirst>
+      {/* <ThemeProvider theme={themes(customization)}> */}
+      <CssBaseline />
+      {/* <NavigationScroll> */}
+      {/* <Routes /> */}
+      <MainRoutes />
+      {/* </NavigationScroll> */}
+      {/* </ThemeProvider> */}
+    </StyledEngineProvider>
   );
 }
 
