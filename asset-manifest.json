@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/AASTU-Academic-staff-load-management/static/css/main.073c9b0a.css",
-    "main.js": "/AASTU-Academic-staff-load-management/static/js/main.57d9a455.js",
+    "main.js": "/AASTU-Academic-staff-load-management/static/js/main.b634a4ce.js",
     "index.html": "/AASTU-Academic-staff-load-management/index.html",
     "main.073c9b0a.css.map": "/AASTU-Academic-staff-load-management/static/css/main.073c9b0a.css.map",
-    "main.57d9a455.js.map": "/AASTU-Academic-staff-load-management/static/js/main.57d9a455.js.map"
+    "main.b634a4ce.js.map": "/AASTU-Academic-staff-load-management/static/js/main.b634a4ce.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.57d9a455.js"
+    "static/js/main.b634a4ce.js"
   ]
 }
