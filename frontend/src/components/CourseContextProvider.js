@@ -65,6 +65,7 @@ const addCourse = (state, course) => {
   ];
   return newState;
 };
+
 const editCourse = (state, course) => {
   const newState = [...state];
   const index = newState.findIndex((c) => c.courseCode === course.courseCode);

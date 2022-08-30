@@ -3,19 +3,24 @@ const Course = require("./../models/course.js");
 const Office = require("./../models/office.js");
 
 const getCourses = async (req, res) => {
-  let courseList = Course.findAll().then((courses) => {
-    let newCourse = courses.map((course) => {
-      let ownerName = "";
-      let owner = Office.findOne({ id: parseInt(course.owner) }).then(
-        (owner) => {
-          ownerName = owner.name;
-        }
-      );
-      return { ownerName, ...course };
-    });
-    console.log(newCourse);
-    res.json(newCourse);
+  let courseList = await Course.findAll({
+    include: Office.name,
   });
+  console.log(JSON.stringify(courseList, null, 2));
+  return res.json(courseList);
+
+  //let newCourse = courses.map((course) => {
+  //  let ownerName = "";
+  //  let owner = Office.findOne({ id: parseInt(course.owner) }).then(
+  //    (owner) => {
+  //      ownerName = owner.name;
+  //    }
+  //  );
+  //  return { ownerName, ...course };
+  //});
+  //console.log(newCourse);
+  //res.json(newCourse);
+  //});
   //let courses = courseList.map(async (course) => {
   //  let owner = await Office.findOne({ id: parseInt(course.owner) });
   //  return { ...course, owner: owner.name };
