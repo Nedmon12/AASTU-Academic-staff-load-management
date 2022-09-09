@@ -18,9 +18,10 @@ export default function StaffOverloadTable(props) {
   name: "id",
   label: "ID",
   options: {
-   filter: false,
+   filter: true,
    sort: true,
-   display:false
+   display:false,
+   filterList: props.id!==false? [props.id] : null,
   }
  },
  {

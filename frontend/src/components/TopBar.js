@@ -144,73 +144,73 @@ const Notification=styled(Box)(({theme})=>({
 function TopBar() {
   const [notifList,setNotifList]=useState([
     {
-      id:1,
+      id:'1',
       detail:"Overload Request has been sent",
       seen:false,
       type:'/staff_overload'
     },
     {
-      id:2,
+      id:'2',
       detail:"Research has been Accepted",
       seen:false,
       type:'/researches'
     },
     {
-      id:3,
+      id:'3',
       detail:"Course Offerings is now open ",
       seen:false,
       type:'/offering'
     },
     {
-      id:4,
+      id:'4',
       detail:"Overload Request has been sent",
       seen:false,
       type:'/staff_overload'
     },
     {
-      id:5,
+      id:'5',
       detail:"Research has been Accepted",
       seen:false,
       type:'/researches'
     },
     {
-      id:6,
+      id:'6',
       detail:"Course Offerings is now open ",
       seen:false,
       type:'/offering'
     },
       {
-      id:7,
+      id:'7',
       detail:"Overload Request has been sent",
       seen:false,
       type:'/staff_overload'
     },
     {
-      id:8,
+      id:'8',
       detail:"Research has been Accepted",
       seen:false,
       type:'/researches'
     },
     {
-      id:9,
+      id:'9',
       detail:"Course Offerings is now open ",
       seen:false,
       type:'/offering'
     },
     {
-      id:10,
+      id:'10',
       detail:"Overload Request has been sent",
       seen:false,
       type:'/staff_overload'
     },
     {
-      id:11,
+      id:'11',
       detail:"Research has been Accepted",
       seen:false,
       type:'/researches'
     },
     {
-      id:12,
+      id:'12',
       detail:"Course Offerings is now open ",
       seen:false,
       type:'/offering'
@@ -220,7 +220,7 @@ function TopBar() {
   const navigate=useNavigate()
   const seeNotf=(id)=>{
     setNotifList((prevNotfList)=>prevNotfList.map((list)=>{
-      if(list.id===id) navigate(list.type)
+      if(list.id===id) navigate(list.type, {state:{id:list.id}})
       return list.id===id?{...list,seen:true}:list
     }))
     setOpenNotf(false)
@@ -293,7 +293,7 @@ function TopBar() {
           notifList.map((list)=>{
             return( 
               list.seen===false &&  
-              <Box>   
+              <Box key={list.id}>   
            <MenuItem onClick={()=>seeNotf(list.id)}>
             {list.detail}
           </MenuItem>

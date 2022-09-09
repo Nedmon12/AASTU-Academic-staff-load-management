@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { Box } from '@mui/system'
 import { Autocomplete, Button, Chip, TextField } from '@mui/material'
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import ActiveResearch from './ActiveResearch'
 import ResearchDetail from './ResearchDetails';
 const Research=styled(Box)(({theme})=>({
@@ -29,6 +29,7 @@ const filterOptions = ['Active', 'Pending', 'Expired'];
 
 export default function Researches() {
  const navigate=useNavigate();
+ const {state}=useLocation();
   const [search,setSearch]=useState('');
   const [filter, setFilter] = React.useState(['Active', 'Pending', 'Expired']);
   const RequestResearch=()=>{
@@ -61,7 +62,7 @@ export default function Researches() {
         onClick={RequestResearch}
         >Request Research</Button>
       </ToolBar>
-      <ActiveResearch options={researchOptions} title="Researches" state={false}/>
+      <ActiveResearch options={researchOptions} title="Researches" state={false} id={state!==null?state.id:false}/>
     </Research>
   )
 }

@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { Button, Divider } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import StaffOverloadTable from './StaffOverloadTable'
 const ToolBar=styled(Box)(({theme})=>({
     display:'flex',
@@ -22,6 +22,7 @@ const Wrapper=styled(Box)(({theme})=>({
 }))
 export default function StaffOverload() {
   const navigate=useNavigate()
+  const {state}=useLocation()
   const options = {
     filterType: 'multiselect',
     selectableRows:'single',
@@ -60,23 +61,24 @@ export default function StaffOverload() {
       data={courseData}
       option={options}
       title="Overload Agreement Forms"
+      id={state!==null?state.id:false}
       />
       <Divider/>
     </Wrapper>
   )
 }
 const courseData = [
- ["dadf","Dec 20,2022","2022", "II","Dec 20,2022-Oct 3,2022","Unsigned"],
- ["dadf","Jan 1,2023","2022", "II","Oct 3,2022-Jan 1,2023","Unsigned"],
- ["dadf","Oct 3,2022","2022","I","Jan 1,2023-May 3,2022","Signed"],
- ["dadf","Jan 4,2023","2022","I","Jan 1,2023-May 3,2022", "Unsigned"],
-  ["dadf","Dec 20,2022","2022", "II","Dec 20,2022-Oct 3,2022","Unsigned"],
- ["dadf","Jan 1,2023","2022", "II","Oct 3,2022-Jan 1,2023","Unsigned"],
- ["dadf","Oct 3,2022","2022","I","Jan 1,2023-May 3,2022","Signed"],
- ["dadf","Jan 4,2023","2022","I","Jan 1,2023-May 3,2022", "Unsigned"],
-  ["dadf","Dec 20,2022","2022", "II","Dec 20,2022-Oct 3,2022","Unsigned"],
- ["dadf","Jan 1,2023","2022", "II","Oct 3,2022-Jan 1,2023","Unsigned"],
- ["dadf","Oct 3,2022","2022","I","Jan 1,2023-May 3,2022","Signed"],
- ["dadf","Jan 4,2023","2022","I","Jan 1,2023-May 3,2022", "Unsigned"],
+ ["1","Dec 20,2022","2022", "II","Dec 20,2022-Oct 3,2022","Unsigned"],
+ ["2","Jan 1,2023","2022", "II","Oct 3,2022-Jan 1,2023","Unsigned"],
+ ["3","Oct 3,2022","2022","I","Jan 1,2023-May 3,2022","Signed"],
+ ["4","Jan 4,2023","2022","I","Jan 1,2023-May 3,2022", "Unsigned"],
+  ["5","Dec 20,2022","2022", "II","Dec 20,2022-Oct 3,2022","Unsigned"],
+ ["6","Jan 1,2023","2022", "II","Oct 3,2022-Jan 1,2023","Unsigned"],
+ ["7","Oct 3,2022","2022","I","Jan 1,2023-May 3,2022","Signed"],
+ ["8","Jan 4,2023","2022","I","Jan 1,2023-May 3,2022", "Unsigned"],
+  ["9","Dec 20,2022","2022", "II","Dec 20,2022-Oct 3,2022","Unsigned"],
+ ["10","Jan 1,2023","2022", "II","Oct 3,2022-Jan 1,2023","Unsigned"],
+ ["11","Oct 3,2022","2022","I","Jan 1,2023-May 3,2022","Signed"],
+ ["12","Jan 4,2023","2022","I","Jan 1,2023-May 3,2022", "Unsigned"],
  
 ];

@@ -70,7 +70,8 @@ export default function Home() {
         </Tabs>
        <Routes>
         <Route exact path="/" element={ <TeachingLoad />} />
-        <Route exact path="/a_research" element={<ActiveResearch options={researchOptions} title="Active Researches" state={true}/> } />
+        <Route exact path="/a_research" element={<ActiveResearch options={researchOptions} 
+        title="Active Researches" state={true} id={false}/> } />
       </Routes>  
     </InfoWrapper>
   

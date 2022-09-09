@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 
 
 const data = [
- ["Artificial Intelligence","12345t", "Active", "Oct 4,2021 - Dec 3, 2023","3","Internal","Addis Ababa Science and Technology University"],
+ ["Artificial Intelligence","2", "Active", "Oct 4,2021 - Dec 3, 2023","3","Internal","Addis Ababa Science and Technology University"],
  ["Side Effects of Global Warming","df2323","Active", "Oct 4,2021 - Dec 3, 2023","4","Internal","Addis Ababa Science and Technology University"],
  ["NanoTechnology","23fdfd","Pending", "Oct 4,2021 - Dec 3, 2023", "3","Internal","Addis Ababa Science and Technology University"],
  ["Internationalization of the World","dfaffddf","Active", "Oct 4,2021 - Dec 3, 2023", "3","Internal","Addis Ababa Science and Technology University"],
@@ -40,8 +40,9 @@ export default function TeachingLoad(props) {
   name: "g_code",
   label: "Grant Code",
   options: {
-   filter: false,
+   filter: true,
    sort: true,
+   filterList: props.id!==false? [props.id] : null,
   }
  },
   {
