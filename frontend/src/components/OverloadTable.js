@@ -97,7 +97,7 @@ const StyledMUIDataTable=styled(MUIDataTable)(({theme})=>({
 export default function OverloadTable(props) {
  return(
   <StyledMUIDataTable
-  title={" Current Assignment"}
+  title={props.title}
   data={data}
   columns={columns}
   options={props.options}

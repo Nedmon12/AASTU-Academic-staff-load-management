@@ -4,6 +4,7 @@ import { Box } from '@mui/system'
 import { Button, Checkbox, Divider, duration, FormControlLabel, TextField, Typography } from '@mui/material'
 import ProfileContext from './ProfileContext'
 import OverloadTable from './OverloadTable'
+import { useLocation, useNavigate } from 'react-router-dom'
 const Agreement=styled(Box)(({theme})=>({
     display:'flex',
     flexDirection:'column',
@@ -64,7 +65,7 @@ const Buttons=styled(Box)(({theme})=>({
     margin:'10px 5px'
 
 }))
-const Footer=styled(Box)(({theme})=>({
+const Footer=styled('td')(({theme})=>({
     width:'100%',
     background:theme.palette.background.default,
     display:'flex',
@@ -72,7 +73,7 @@ const Footer=styled(Box)(({theme})=>({
     gap:'20px',
     borderBottom: `0.5px solid ${theme.palette.third.light}`
 }))
-const FooterWrapper=styled(Box)(({theme})=>({
+const FooterWrapper=styled('tr')(({theme})=>({
     display:'flex',
     flexDirection:'column',
     justifyContent:'flex-end',
@@ -81,6 +82,8 @@ const FooterWrapper=styled(Box)(({theme})=>({
 
 }))
 export default function Overload() {
+    const {state: {doc_id,view}}=useLocation();
+    const navigate=useNavigate();
     const {state}=useContext(ProfileContext);
     const{name, college,rank,dep,mobile,calendar,details}=state;
     const{year, semester,duration,n_weeks}=calendar;
@@ -169,7 +172,7 @@ export default function Overload() {
         >
          <ol>
            <li> {`The assignment given  to you is as follows:`}
-              <OverloadTable options={options}/>
+              <OverloadTable options={options} title={view?"Load Assignment":"Current Assignment"}/>
            </li>
            <li>{`The Normal period of the semester is from to ${duration} during which based on the
                  Academic Rank the University will pay the employee a gross sum of birr ${n_weeks*payment_rate*overload}, 
@@ -183,19 +186,26 @@ export default function Overload() {
             and the semester course is not be properly covered. `}</li>
          </ol>
         </Information>
-        
-        <FormControlLabel control={<Checkbox 
-        color='secondary' 
-        value={agree}
-        onChange={()=>setAgree(!agree)}
-        sx={{color:'third.main', }}
-        />} 
-        label="I agree to the terms stated above" 
+        {
+          view?
+          <Information>
+            The Instructor has agreed to all the terms stated above.
+          </Information>:
+                  <FormControlLabel control={<Checkbox 
+                color='secondary' 
+                value={agree}
+                onChange={()=>setAgree(!agree)}
+                sx={{color:'third.main', }}
+                />} 
+                label="I agree to the terms stated above" 
         />
+        }
+
   
         <Buttons>
                 <Button variant="contained"
                     size="medium"
+                    onClick={()=>navigate('/staff_overload')}
                     sx={{
                     fontWeight: 400,
                     color:'#fff',
@@ -203,16 +213,28 @@ export default function Overload() {
                     "&:hover":{
                     bgcolor:'darkGray'}}}
                 >Cancel</Button>
-            <Button variant="contained"
-                disabled={!agree}
-                size="medium"
-                sx={{
-                bgcolor:'secondary.main',
-                fontWeight: 400,
-                color:'#fff',
-                "&:hover":{
-                bgcolor:'secondary.hover',}, }}
-                >Submit </Button>
+                {
+                  view?
+                  <Button variant="contained"
+                  size="medium"
+                  sx={{
+                  bgcolor:'secondary.main',
+                  fontWeight: 400,
+                  color:'#fff',
+                  "&:hover":{
+                  bgcolor:'secondary.hover',}, }}
+                  >Print </Button>:
+                  <Button variant="contained"
+                      disabled={!agree}
+                      size="medium"
+                      sx={{
+                      bgcolor:'secondary.main',
+                      fontWeight: 400,
+                      color:'#fff',
+                      "&:hover":{
+                      bgcolor:'secondary.hover',}, }}
+                      >Submit </Button>
+                }
         </Buttons>
     </Agreement>
   )

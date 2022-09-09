@@ -32,11 +32,12 @@ export default function StaffOverload() {
     responsive:'scroll',
     customToolbarSelect:(selectedRows, displayData, setSelectedRows) => {
             const status=displayData[selectedRows.data[0].dataIndex].data[5];
+            const id=displayData[selectedRows.data[0].dataIndex].data[0];
             return(status==="Unsigned"?
                     <ToolBar>
                     <Button variant="outlined"
                     color='secondary'
-                    onClick={()=>navigate('/staff_overload/agreement')}
+                    onClick={()=>navigate('/staff_overload/agreement',{state:{doc_id:id, view:false}})}
                     >Fill the Agreement Form</Button>
                     <Button variant="outlined"
                     color='third'
@@ -46,7 +47,7 @@ export default function StaffOverload() {
                     <ToolBar>
                     <Button variant="outlined"
                     color='secondary'
-                    onClick={()=>navigate('/staff_overload/agreement')}
+                    onClick={()=>navigate('/staff_overload/agreement',{state:{doc_id:id, view:true}})}
                     >View Agreement Form</Button>
                     <Button variant="outlined"
                     color='third'
