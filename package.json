@@ -10,10 +10,18 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@material-ui/core": "^4.12.4",
+    "@material-ui/pickers": "^3.3.10",
+    "@mui/lab": "^5.0.0-alpha.98",
+    "@mui/x-date-pickers": "^5.0.0",
+    "date-fns": "^2.29.2",
+    "dayjs": "^1.11.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "mysql2": "^2.3.3",
     "nodemon": "^2.0.19",
-    "sequelize": "^6.21.3"
+    "react-router-dom": "^6.3.0",
+    "sequelize": "^6.21.3",
+    "shortid": "^2.2.16"
   }
 }
