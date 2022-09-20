@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Courses from "./components/Courses";
+import SideBar from "./components/SideBar";
+import TopBar from "./components/TopBar";
+import { CourseContextProvider } from "./components/CourseContextProvider";
+import { Button, ThemeProvider } from "@mui/material";
+import { theme } from "./components/theme";
+import { useEffect, useContext } from "react";
+import axios from "axios";
+import CourseContext from "./components/CourseContextProvider";
+
+//backend api url
+axios.defaults.baseURL = "http://localhost:5000/api/";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <CourseContextProvider>
+        <ThemeProvider theme={theme}>
+          <TopBar />
+          <SideBar />
+          <Courses />
+        </ThemeProvider>
+      </CourseContextProvider>
+    </>
   );
 }
 

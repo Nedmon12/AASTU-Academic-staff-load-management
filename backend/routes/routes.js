@@ -1,10 +1,11 @@
-const routes = require('express').Router()
+const routes = require("express").Router();
 
-routes.use('/courses')
-routes.use('/office')
-routes.use('/users')
-routes.use('/semester')
-routes.use('research',)
+//routes.use(require("./courseRoutes"));
+//routes.use(require("./officeRoutes"));
+//routes.use(require("./userRoutes"));
+//routes.use(require("./semesterRoutes"));
+//routes.use(require("./researchRoutes"));
 
-
-module.exports = routes
+const courseRoutes = require("./courseRoutes");
+routes.use("/courses", courseRoutes);
+module.exports = routes;
